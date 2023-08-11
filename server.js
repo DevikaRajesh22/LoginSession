@@ -1,10 +1,12 @@
  //importing modules
  const express=require('express');
  const path=require('path');
- const bodyparser=require('body-parser');
+ //const bodyparser=require('body-parser');
  const session=require('express-session');
- const {v4: uuidv4}=require('uuid');
+ //const {v4: uuidv4}=require('uuid');
  const router=require('./router');
+ const crypto=require('crypto');
+ const nocache=require('nocache');
 
  //loading app
  const app=express();
@@ -13,8 +15,8 @@
  const port=process.env.PORT || 3000;
 
  //to pass incoming req to middleware before we use it
- app.use(bodyparser.json())
- app.use(bodyparser.urlencoded({extended:true}))
+ app.use(express.json())
+ app.use(express.urlencoded({extended:true}))
 
  //setting view engine as ejs
  app.set('view engine','ejs');
@@ -22,9 +24,12 @@
  //load static asset
  app.use(express.static(path.join(__dirname,'public')))
 app.use(express.static(path.join(__dirname,'public/assets')))
+app.use(nocache())
+
+const secretkey=crypto.randomBytes(32).toString('hex')
 
 app.use(session({
-    secret:uuidv4(),
+    secret:secretkey,
     resave:false,
     saveUninitialized:true,
 }))

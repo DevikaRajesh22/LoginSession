@@ -1,4 +1,5 @@
 var express=require('express');
+const nocache=require('nocache');
 var router=express.Router();
 
 //hardcoded credential value
@@ -8,33 +9,34 @@ var credential={
 }
 
 //router for login user
-router.post('/login',(req,res)=>{
+router.post('/login',nocache(),(req,res)=>{
     if(req.body.email==credential.email && req.body.password==credential.password){
         req.session.user=req.body.email;
        res.redirect('/route/dashboard');
        //res.end("Login successful");
     }else{
-        res.end("Invalid username");
+        res.redirect("/");
     }
 });
 
 //router for dashboard
 router.get('/dashboard',(req,res)=>{
     if(req.session.user){
-        res.render('dashboard',{user : req.session.user})
+        res.render('dashboard');
     }else{
-        res.send("Unauthorized user");
+        res.redirect("/");
     }
 });
 
 //router for logout
-router.get('/logout',(req,res)=>{
+router.get('/logout',nocache(),(req,res)=>{
     req.session.destroy(function(err){
         if(err){
             console.log(err);
             res.send("error");
         }else{
-            res.render('base',{title:"Express",logout:"Logout successfully"});
+           // res.render('base',{title:"Express",logout:"Logout successfully"});
+           res.redirect('/');
         }
     })
 })

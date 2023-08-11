@@ -1,12 +1,41 @@
 <%-include('header')-%>
 
-<div class="text-center center-div mt-5" id="login">
-    <div class="container w-25 border py-5 mt-5">
-        <h3>Welcome to Express dashboard</h3>
-        <h5><%= locals.user ? user : "User" %></h5>
-        <a href="/route/logout">Logout</a>
+    <!-- navbar  -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+        <div class="container">
+          <a class="navbar-brand" style="color: white;" href="#">TRENDS FASHION</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Products</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Contact</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    
+      <div class="text-center center-div mt-5" id="login">
+        <div class="container w-25 border py-5 mt-5" id="dashboard-block">
+
+            <h3>Welcome to dashboard</h3>
+            <h5>
+                <%= locals.user ? user : "User" %>
+            </h5>
+            <a href="/route/logout">Logout</a>
+        </div>
     </div>
-</div>
 
 
-<%-include('footer')-%>
+    <%-include('footer')-%>
