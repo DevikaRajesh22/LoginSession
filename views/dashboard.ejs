@@ -33,7 +33,9 @@
             <h5>
                 <%= locals.user ? user : "User" %>
             </h5>
-            <a href="/route/logout">Logout</a>
+            <form action="/logout" method="post">
+              <button type="submit">Logout</button>
+            </form>
         </div>
     </div>
 

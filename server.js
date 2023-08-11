@@ -3,6 +3,7 @@
  const path=require('path');
  //const bodyparser=require('body-parser');
  const session=require('express-session');
+
  //const {v4: uuidv4}=require('uuid');
  const router=require('./router');
  const crypto=require('crypto');
@@ -22,8 +23,8 @@
  app.set('view engine','ejs');
 
  //load static asset
- app.use(express.static(path.join(__dirname,'public')))
-app.use(express.static(path.join(__dirname,'public/assets')))
+app.use(express.static(path.join(__dirname,'public')))
+// app.use(express.static(path.join(__dirname,'public/assets')))
 app.use(nocache())
 
 const secretkey=crypto.randomBytes(32).toString('hex')
@@ -34,12 +35,7 @@ app.use(session({
     saveUninitialized:true,
 }))
 
-app.use('/route',router);
-
- //home route
- app.get('/',(req,res)=>{
-    res.render('base',{title:"Login System"});
- })
+app.use('/',router);
 
  //listening to specified port and logging message
  app.listen(port,()=>{console.log('listening to server on http://localhost:3000')});
