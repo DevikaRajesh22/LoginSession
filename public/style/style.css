@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+body{
+    font-family: 'Open Sans', sans-serif;
+    background-image: url('/background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+}
+
+.center-div{
+    padding-top: 10%;
+}
+
+.btn.btn-success{
+    padding: .4em 2em;
+}
+
+form{
+    padding: 0 3em;
+}
+
+
+.form-control{
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+btn{
+    width: 130px;
+}
+
+#login .title > span{
+    font-size: .8em;
+}
+
+#form-block{
+    background-color: beige;
+    border-radius: 10px;
+    box-shadow: 5px 10px 28px;
+}
