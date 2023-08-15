@@ -1,16 +1,10 @@
 <%-include('header')-%>
-
-    <div class="container-fluid  text-center center-div" id="login">
+<section class="wraper">
+    <div class="container text-center center-div" id="login">
         <div class="container w-25 border py-5" id="form-block">
             <div class="title pb-5">
                 <h2 class="font-weight-bold">Login</h2>
                 <span>Log in for the existing user</span>
-                <% if (locals.logout){ %>
-                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                      <%= logout %>
-                    </div>
-                    <% } %>
             </div>
             <form action="/login" method="POST">
                 <div class="form-group">
@@ -23,5 +17,6 @@
             </form>
         </div>
     </div>
+</section>
 
     <%-include('footer')-%>
